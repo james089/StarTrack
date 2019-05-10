@@ -5,8 +5,69 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:StarTrack"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="StarTrack" Height="600" Width="800" Icon="star.ico" Loaded="Window_Loaded">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid Height="500" Margin="5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="500"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Border BorderBrush="{DynamicResource BorderBrush}" BorderThickness="1">
+                <Grid x:Name="Coordinate">
+                    <Line X1="0" Y1="250" X2="500" Y2="250" Stroke="{DynamicResource BorderBrush}" StrokeThickness="1" />
+                    <Line X1="250" Y1="0" X2="250" Y2="500" Stroke="{DynamicResource BorderBrush}" StrokeThickness="1" />
+                </Grid>
+            </Border>
+            <Viewbox>
+                <Canvas x:Name="mCanvas" Width="500" Height="500">
+
+                </Canvas>
+            </Viewbox>
+            <StackPanel Grid.Column="1">
+                <GroupBox Header="Star1" Margin="5">
+                    <Grid VerticalAlignment="Top">
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Label Content="Vel"/>
+                        <TextBox x:Name="TB_vel1" Grid.Column="1" Margin="5" Text="1"/>
+                        <Label Content="Track Radius" Grid.Row="1"/>
+                        <ComboBox x:Name="CB_track1" SelectedIndex="5" Grid.Row="1" Grid.Column="1" Margin="5" SelectionChanged="CB_track1_SelectionChanged"/>
+                    </Grid>
+                </GroupBox>
+                <GroupBox Header="Star2" Margin="5">
+                    <Grid VerticalAlignment="Top">
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Label Content="Vel"/>
+                        <TextBox x:Name="TB_vel2" Grid.Column="1" Margin="5" Text="2"/>
+                        <Label Content="Track Radius" Grid.Row="1"/>
+                        <ComboBox x:Name="CB_track2" SelectedIndex="8" Grid.Row="1" Grid.Column="1" Margin="5" SelectionChanged="CB_track2_SelectionChanged"/>
+                    </Grid>
+                </GroupBox>
+                <WrapPanel>
+                    <Button x:Name="Btn_runStar" Content="Run Stars" Click="Btn_runStar_Click" Margin="5" Width="100"/>
+                    <Button x:Name="Btn_drawLines" Content="Draw lines" Click="Btn_drawLines_Click" Margin="5" Width="100"/>
+                    <Button x:Name="Btn_stop" Content="Stop" Click="Btn_stop_Click" Margin="5" Width="100"/>
+                    <CheckBox x:Name="Chk_showGrid" Content="Show Grid" IsChecked="False" Checked="Chk_showGrid_Checked" Unchecked="Chk_showGrid_Checked"/>
+                </WrapPanel>
+            </StackPanel>
+        </Grid>
+        <Label x:Name="lbl_version" Content="version" Grid.Row="1" HorizontalAlignment="Right" />
     </Grid>
 </Window>
